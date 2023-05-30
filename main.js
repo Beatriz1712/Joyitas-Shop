@@ -3,22 +3,22 @@ const productos = [
     {
       id: 1,
       nombre: "Collar medallon",
-      precio: 500,
+      precio: 800,
       img:
-       src= "./imagenes/medallon golden.jpg",
+       src= "./imagenes/medallon circulo.png",
       cantidad: 1,
     },
     {
       id: 2,
-      nombre: "Cadena Pulsera",
-      precio: 300,
+      nombre: "Pulsera brazalete dorada",
+      precio: 500,
       img:
-       src= "./imagenes/cadena-pulsera-gold.jpg",
+       src= "./imagenes/pulsera brasalete.png",
       cantidad: 1,
     },
     {
       id: 3,
-      nombre: "Anillos",
+      nombre: "Anillo",
       precio: 400,
       img:
        src="./imagenes/anillo-ring-with-ornament.webp",
