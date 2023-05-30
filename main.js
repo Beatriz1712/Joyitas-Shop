@@ -13,7 +13,7 @@ const productos = [
       nombre: "Pulsera brazalete dorada",
       precio: 500,
       img:
-       src= "./imagenes/pulsera brasalete.png",
+       src= "./imagenes/pulsera brazalete.png",
       cantidad: 1,
     },
     {
