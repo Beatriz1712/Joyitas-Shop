@@ -82,7 +82,7 @@ const modalContainer = document.getElementById("modal-container");
    //agrego evento al icono carrito,creo un div modal para el carrito
    verCarrito.addEventListener("click", () => {
 
-    //ojo
+  
    modalContainer.innerHTML = "";
    modalContainer.style.display = "flex";
 
@@ -117,8 +117,11 @@ const modalContainer = document.getElementById("modal-container");
       `;
     
      modalContainer.append(carritoContent);
+
+     
    });
 
+   
 
    const total = carrito.reduce((acc, el) => acc + el.precio, 0);
 
@@ -138,3 +141,5 @@ const guardarLocal = () => {
 };
   //get item recupero los datos de local storage
   JSON.parse(localStorage.getItem("carrito"));
+
+

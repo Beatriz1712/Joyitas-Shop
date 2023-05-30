@@ -52,7 +52,7 @@
    cursor: pointer;
  }
  
- /*Banner styles*/
+ /*banner styles*/
  .banner {
    background-size: cover;
    background-position: center;
@@ -90,6 +90,7 @@
    margin-left: 60px;
    margin-right: 60px;
  }
+ 
  .card {
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
    max-width: 300px;
@@ -183,31 +184,5 @@
    padding-top: 20px;
  }
  
- /*
 
- /*delete button product*/
- .delete-product {
-   cursor: pointer;
- }
- 
- /*CarritoCounter*/
- .cantidad-carrito {
-   background-color: red;
-   color: white;
-   border-radius: 50%;
-   font-size: 12px;
-   padding: 4px;
-   top: 37px;
-   right: 14px;
-   position: absolute;
-   display: none;
- }
- 
- .sumar {
-   cursor: pointer;
- }
- 
- .restar {
-   cursor: pointer;
- }
  
