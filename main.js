@@ -1,37 +1,3 @@
-const productos = [
-    {
-      id: 1,
-      nombre: "Collar medallon",
-      precio: 500,
-      img:
-       src= "./imagenes/medallon circulo.png",
-      cantidad: 1,
-    },
-    {
-      id: 2,
-      nombre: "Pulsera dorada",
-      precio: 500,
-      img:
-       src= "./imagenes/pulsera brazalete.png",
-      cantidad: 1,
-    },
-    {
-      id: 3,
-      nombre: "Anillo",
-      precio: 500,
-      img:
-       src="./imagenes/anillo-ring-with-ornament.webp",
-      cantidad: 1,
-    },
-    {
-      id: 4,
-      nombre: "Aros de bodas",
-      precio: 500,
-      img:
-       src="./imagenes/aro-bodas-diamante.png",
-      cantidad: 1,
-    },
-  ];
 
 //me traigo el Id del content del html
 const shopContent = document.getElementById("shopContent");
@@ -42,129 +8,88 @@ const verCarrito = document.getElementById("verCarrito");
 //modal
 const modalContainer = document.getElementById("modal-container");
 
-//new
+//
 const cantidadCarrito = document.getElementById("cantidadCarrito");
 const showAlert = document.getElementById("showAlert");
   
 //recoorro productos
  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+ //asincronía
+  const getProducto = async () => {
+  const response = await fetch("data.json");
+  const data = await response.json();
+  console.log(data);
+
+  //ya no recorro el array producto,ahora recorro data de data.json
+  data.forEach((producto)=> {
+    let content = document.createElement("div");
+    content.className = "card";
  
- productos.forEach((producto)=> {
-   let content = document.createElement("div");
-   content.className = "card";
-   //creando etiquetas html
-   content.innerHTML = `
-  <img src="${producto.img}">
-  <h3>${producto.nombre}</h3>
-  <p class="precio"> $${producto.precio} </p>
-  `;
-
-   // a shopcontent le agrego content como hijo 
-   shopContent.append(content);
-
-   //creo y agrego boton comprar
-   const comprar = document.createElement("button");
-   comprar.innerText = "comprar";
-   comprar.className = "comprar";
-
-   content.append(comprar);
-
-   comprar.addEventListener("click", () => {
-    const repeat =carrito.some((repeatProduct) => repeatProduct.id === producto.id);
-     
-    if (repeat) {
-      carrito.map((prod) => {
-        if (prod.id === producto.id) {
-          prod.cantidad++;
-        }
+    //creando etiquetas html
+    content.innerHTML = `
+   <img src="${producto.img}">
+   <h3>${producto.nombre}</h3>
+   <p class="precio"> $${producto.precio} </p>
+   `;
+ 
+    // a shopcontent le asigno padre de content 
+    shopContent.append(content);
+ 
+    //creo y agrego boton comprar
+    const comprar = document.createElement("button");
+    comprar.innerText = "comprar";
+    comprar.className = "comprar";
+ 
+    content.append(comprar);
+ 
+    comprar.addEventListener("click", () => {
+      //
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'El producto se agregó al carrito',
+        showConfirmButton: false,
+        timer: 1500
+    })
+    
+      
+     const repeat =carrito.some((repeatProduct) => repeatProduct.id === producto.id);
+      
+     if (repeat) {
+       carrito.map((prod) => {
+         if (prod.id === producto.id) {
+           prod.cantidad++;
+         }
+       });
+     } else {
+     carrito.push({
+        id: producto.id,
+        img: producto.img,
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: producto.cantidad,
       });
-    } else {
-    carrito.push({
-       id: producto.id,
-       img: producto.img,
-       nombre: producto.nombre,
-       precio: producto.precio,
-       cantidad: producto.cantidad,
-     });
-     //verifico que los productos se agreguen al carrito
-     console.log(carrito);
-     //new
-     console.log(carrito.length);
-     carritoCounter();
-     guardarLocal();
-   }
+      //verifico que los productos se agreguen al carrito
+      console.log(carrito);
+      //
+      console.log(carrito.length);
+      carritoCounter();
+      guardarLocal();
+    }
+   });
   });
- });
+ };
 
-
+ //llamar a la funcion para pintar los productos
+ getProducto();
+  
+ 
  //set item NEW
 const guardarLocal = () => {
   localStorage.setItem("carrito", JSON.stringify(carrito));
 };
- //CARRITO
-   //agrego evento al icono carrito,creo un div modal para el carrito
-//    verCarrito.addEventListener("click", () => {
-
-  
-//    modalContainer.innerHTML = "";
-//    modalContainer.style.display = "flex";
-
-//     const modalHeader = document.createElement("div");
-//     modalHeader.className = "modal-header";
-//     modalHeader.innerHTML = `
-//     <h1 class= "modal-header-title">El carrito contiene :</h1>
-//     `;
-//     modalContainer.append(modalHeader);
-
-//     //creo boton modal
-//     const modalbutton = document.createElement("h1");
-//     modalbutton.innerText = "X";
-//     modalbutton.className = "modal-header-button";
-
-//     //cerrar modal
-//     modalbutton.addEventListener("click", () => {
-//       modalContainer.style.display = "none";
-//     });
-
-//     //agrego como hijo al buton
-//     modalHeader.append(modalbutton);
-    
-//     //recorremos el carrito content
-//     carrito.forEach((producto) => {
-//       let carritoContent = document.createElement("div");
-//       carritoContent.className = "modal-content";
-//       carritoContent.innerHTML = `
-//       <img src="${producto.img}">
-//       <h3>${producto.nombre}</h3>
-//       <p>$ ${producto.precio}</p>
-//       `;
-    
-//      modalContainer.append(carritoContent);
-
-     
-//    });
-
-   
-
-//    const total = carrito.reduce((acc, el) => acc + el.precio, 0);
-
-//    const totalCompra = document.createElement("div");
-//    totalCompra.className = " total-content";
-//    totalCompra.innerHTML = `total a pagar: $ ${total}`;
-
-//    modalContainer.append(totalCompra);
-   
-   
-//   });
-
-//   //local storage
-//   //set item  lo manda como string: stringify
-// const guardarLocal = () => {
-//   localStorage.setItem("carrito",JSON.stringify(carrito));
-// };
-//   //get item recupero los datos de local storage
-//   JSON.parse(localStorage.getItem("carrito"));
-
+ 
 
 const pintarCarrito = () => {
   modalContainer.innerHTML = "";
@@ -222,7 +147,25 @@ const pintarCarrito = () => {
     let eliminar = carritoContent.querySelector(".delete-product");
 
     eliminar.addEventListener("click", () => {
-      eliminarProducto(producto.id);
+      //alert
+      Swal.fire({
+        title: 'Está seguro de eliminar el producto?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, seguro',
+        cancelButtonText: 'No, no quiero'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Borrado!',
+                icon: 'success',
+                text: 'El archivo ha sido borrado'
+            })
+            eliminarProducto(producto.id);
+        }
+    })
+     
     });
 
   });
@@ -233,13 +176,33 @@ const pintarCarrito = () => {
   totalCompra.className = "total-content";
   totalCompra.innerHTML = `Total a pagar: $ ${total}`;
   modalContainer.append(totalCompra);
+
+  //Implementando botón Compra Final
+  const compraFinal = document.createElement("button");
+  compraFinal.innerText = " COMPRA FINAL";
+  compraFinal.className =  "compraFinal";
+  
+  modalContainer.append(compraFinal);
+ 
+  compraFinal.addEventListener("click", () => {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Compra realizada',
+      showConfirmButton: false,
+      timer: 1500
+  })
+   // Cerrar el modal
+   modalContainer.style.display = 'none';
+  })
 };
 
 verCarrito.addEventListener("click", pintarCarrito);
 
+//Eliminando producto
 const eliminarProducto = (id) => {
+  
   const foundId = carrito.find((element) => element.id === id);
-
   console.log(foundId);
 
   carrito = carrito.filter((carritoId) => {
@@ -251,6 +214,7 @@ const eliminarProducto = (id) => {
   pintarCarrito();
 };
 
+//Contador de productos
 const carritoCounter = () => {
   cantidadCarrito.style.display = "block";
 
