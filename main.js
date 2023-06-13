@@ -160,7 +160,7 @@ const pintarCarrito = () => {
             Swal.fire({
                 title: 'Borrado!',
                 icon: 'success',
-                text: 'El archivo ha sido borrado'
+                text: 'El producto ha sido eliminado'
             })
             eliminarProducto(producto.id);
         }
