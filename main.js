@@ -158,7 +158,7 @@ const pintarCarrito = () => {
 
         if (result.isConfirmed) {
             Swal.fire({
-                title: 'Borrado!',
+                title: 'Eliminado!',
                 icon: 'success',
                 text: 'El producto ha sido eliminado'
             })
