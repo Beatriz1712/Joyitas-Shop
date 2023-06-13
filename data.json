@@ -1,0 +1,30 @@
+ [
+    {
+      "id": 1,
+      "nombre": "Collar medallon",
+      "precio": 500,
+      "img":  "./imagenes/medallon circulo.png",
+      "cantidad":1
+    },
+    {
+      "id": 2,
+      "nombre": "Pulsera dorada",
+      "precio": 500,
+      "img": "./imagenes/pulsera brazalete.png",
+      "cantidad": 1
+    },
+    {
+     " id": 3,
+      "nombre": "Anillo",
+      "precio": 500,
+      "img": "./imagenes/anillo-ring-with-ornament.webp",
+      "cantidad": 1
+    },
+    {
+      "id": 4,
+      "nombre": "Aros de bodas",
+      "precio": 500,
+      "img": "./imagenes/aro-bodas-diamante.png",
+      "cantidad": 1
+    }
+ ]
