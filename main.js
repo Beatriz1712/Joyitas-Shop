@@ -100,9 +100,9 @@ const pintarCarrito = () => {
       <h1 class="modal-header-title">El carrito contiene :</h1>
     `;
   modalContainer.append(modalHeader);
-
+//✖️
   const modalbutton = document.createElement("h1");
-  modalbutton.innerText = "x";
+  modalbutton.innerText = "✖️ ";
   modalbutton.className = "modal-header-button";
 
   modalbutton.addEventListener("click", () => {
@@ -122,7 +122,7 @@ const pintarCarrito = () => {
         <p>${producto.cantidad}</p>
         <span class="sumar"> + </span>
         <p>Total: $${producto.cantidad * producto.precio} </p>
-        <span class="delete-product"> ❌ </span>
+        <span class="delete-product"> 🗑 </span>
       `;
 
     modalContainer.append(carritoContent);

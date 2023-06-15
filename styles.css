@@ -161,6 +161,7 @@
  
  .modal-header-button {
    cursor: pointer;
+   color : #ff0000;
  }
  
  .modal-container > .modal-content {
@@ -219,3 +220,10 @@
    font-size: 18px;
    background-color: burlywood;
  }
+
+
+
+.delete-product{
+  color: black; 
+  font-size: 3em;
+}
